@@ -8,7 +8,7 @@
   vars:
     resource_group: "{{ resource_group_name }}"
     vm_name: testvm
-    location: eastus
+    location: southeastasia
   tasks:
   - name: Create a resource group
     azure_rm_resourcegroup:
@@ -18,12 +18,12 @@
     azure_rm_virtualnetwork:
       resource_group: "{{ resource_group }}"
       name: "{{ vm_name }}"
-      address_prefixes: "10.0.0.0/16"
+      address_prefixes: "10.20.0.0/16"
   - name: Add subnet
     azure_rm_subnet:
       resource_group: "{{ resource_group }}"
       name: "{{ vm_name }}"
-      address_prefix: "10.0.1.0/24"
+      address_prefix: "10.20.1.0/24"
       virtual_network: "{{ vm_name }}"
   - name: Create public IP address
     azure_rm_publicipaddress:
